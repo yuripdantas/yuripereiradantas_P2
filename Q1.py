@@ -1,6 +1,6 @@
 #Nome: Yuri Pereira Dantas
 #Questao 1 da P2 de Comp1 / Professor Juliano
-#versao: do jeito exato que escrevi na minha prova
+#versao: Corrigido
 
 #Questao 1a)
 
@@ -32,38 +32,56 @@ def dict_Data(data):
 #Questao 1b)
 
 def verificarAtivo(condicao): #condicao eh string
-    if condicao[4] == \ : #Aqui esqueci de botar a contrabarra entre aspas
+    if condicao[4] == 'n' : 
         condicao1 = condicao[0]
         condicao2 = condicao[1]
         condicao3 = condicao[2]
         condicao = condicao1 + condicao2 + condicao3
-        booleana = TRUE #Aqui esqueci que so a primeira letra e maiuscula do True
+        booleana = True 
         if condicao == 'SIM':
             return booleana
         elif condicao == 'NAO':
-            booleana = FALSE #Cometi o mesmo erro aqui sobre somente a primeira letra ser maiuscula
+            booleana = False 
             return booleana
 
 #Questao 1c)
 
 def separador(lista):
-    listanova = [] 
-    i = 0
-    tamanho = len(lista)
-    for cont in range (tamanho):
-        if lista[cont] == ':':
-            while i < cont:
-                listanova[i] = lista[i]
-                i = i + 1
-            i = i +1
+    listanova = lista.split(':')
     return listanova
 
+#Questao 1d)
 def arqlista(fd):
+    fd.seek(0)
     lista = fd.readlines()
     return lista
 
 def main():
-    fd = fd.open('cadastro'.txt, 'r')
-    list = []
-    list = arqlista(fd)
-    list = separador
+    clientes = []
+    arquivo = open('cadastro.txt','r')
+
+    dic_cadastro = {'CPF':'',
+             'NOME':'',
+             'DATA_DE_NASCIMENTO':'',
+             'DATA_DO_CADASTRO':'',
+             'ATIVO':''
+    }
+    
+    linhasDoArquivo = arqlista(arquivo)
+
+    for cont in range(len(linhasDoArquivo)):
+        dic_CadastroAtual = dic_cadastro.copy()
+        dadosPessoais = separador(linhasDoArquivo[cont])
+        dic_CadastroAtual['CPF'] = dadosPessoais[0]
+        dic_CadastroAtual['NOME'] = dadosPessoais[1]
+        dic_CadastroAtual['DATA_DE_NASCIMENTO'] = dict_Data(dadosPessoais[2])
+        dic_CadastroAtual['DATA_DO_CADASTRO'] = dict_Data(dadosPessoais[3])
+        dic_CadastroAtual['ATIVO'] = verificarAtivo(dadosPessoais[4])
+        clientes.append(dic_CadastroAtual)
+
+    print(clientes)
+
+    arquivo.close()
+
+main()
+
