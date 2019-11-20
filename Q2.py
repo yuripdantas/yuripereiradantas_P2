@@ -1,6 +1,6 @@
 #Nome: Yuri Pereira Dantas
 #Questao 2 da P2 de Comp1 / Professor Juliano
-#versao: do jeito exato que escrevi na minha prova
+#versao: corrigido
 
 def calculaDet(matrix):
     return(matrix[0][0]*matrix[1][1]) - (matrix[1][0]*matrix[0][1])
@@ -27,12 +27,12 @@ def changeValues(a, b):
 def imprimeMatriz(matrix, nlinhas, ncolunas):
     for linhas in range (nlinhas):
         for colunas in range (ncolunas):
-            print(matrix[linhas][coluna], end = '\t')
+            print(matrix[linhas][colunas], end = '\t')
         print()
 
 def main():
     tamanho = 2
-    matriz[0] * tamanho
+    matriz = [0] * tamanho
     for i in range (tamanho):
         matriz[i] = [0] * tamanho
     print('Digite o indice A da matriz')
@@ -42,7 +42,7 @@ def main():
     print('Digite o indice C da matriz')
     matriz[1][0] = int(input())
     print('Digite o indice D da matriz')
-    matri[1][1] = int(input())
+    matriz[1][1] = int(input())
     imprimeMatriz(matriz, tamanho, tamanho)
     print('Agora vamos inverter sua matriz')
     matriz = inverterMatriz(matriz)
