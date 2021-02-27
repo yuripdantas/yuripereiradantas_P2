@@ -1,6 +1,6 @@
 # yuripereiradantas_P2
 
-UFRJ - Universidade Federal do Rio de Janeiro
+UFRJ - Universidade Federal do Rio de Janeiro /n
 Escola Politécnica
 Engenharia Eletrônica e de Computação
 EEL170 - Computação 1
